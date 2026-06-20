@@ -1,0 +1,388 @@
+/* ============================================
+   CHURRASCO DA COPA — style.css
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --verde: #009c3b;
+  --amarelo: #FFDF00;
+  --azul: #002776;
+  --fogo: #FF4500;
+  --dark: #0a0a0a;
+  --card-bg: rgba(10, 10, 10, 0.82);
+  --card-border: rgba(255, 223, 0, 0.18);
+  --text: #f5f5f5;
+  --muted: #aaa;
+  --radius: 16px;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--dark);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ---- BACKGROUND ---- */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url('assets/vini.jpeg');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+  z-index: 0;
+  filter: brightness(0.38) saturate(1.2);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,39,118,0.55) 0%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(255,69,0,0.2) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---- HERO ---- */
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 2rem 4rem 6vw;
+}
+
+.hero-content {
+  max-width: 520px;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--amarelo);
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 10rem);
+  line-height: 0.92;
+  color: #fff;
+  letter-spacing: 0.01em;
+  margin-bottom: 2rem;
+  text-shadow: 0 4px 32px rgba(0,0,0,0.6);
+}
+
+.title span {
+  color: var(--amarelo);
+  -webkit-text-stroke: 1px rgba(0,0,0,0.3);
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f0f0f0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+}
+
+.btn-scroll {
+  display: inline-block;
+  background: var(--amarelo);
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  transition: transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 4px 24px rgba(255,223,0,0.35);
+}
+
+.btn-scroll:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(255,223,0,0.5);
+}
+
+/* ---- FORM SECTION ---- */
+.form-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1.5rem 6rem;
+  min-height: 100vh;
+}
+
+.form-card,
+.success-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+}
+
+/* ---- FORM HEADER ---- */
+.form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-header h2 {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  letter-spacing: 0.03em;
+  color: var(--amarelo);
+  margin-bottom: 0.4rem;
+}
+
+.form-header p {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* ---- GUEST BLOCK ---- */
+.guest-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.2rem 1.2rem 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.guest-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amarelo);
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ccc;
+  letter-spacing: 0.04em;
+}
+
+.field input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.field input::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.field input:focus {
+  border-color: var(--amarelo);
+  background: rgba(255,255,255,0.09);
+}
+
+/* Remove button for companions */
+.btn-remove {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  background: rgba(255,60,60,0.18);
+  border: 1px solid rgba(255,60,60,0.3);
+  color: #ff6b6b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-remove:hover {
+  background: rgba(255,60,60,0.35);
+}
+
+/* ---- BUTTONS ---- */
+.btn-add {
+  width: 100%;
+  background: transparent;
+  border: 1.5px dashed rgba(255,255,255,0.2);
+  color: #ccc;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  letter-spacing: 0.02em;
+}
+
+.btn-add:hover {
+  border-color: var(--amarelo);
+  color: var(--amarelo);
+  background: rgba(255,223,0,0.06);
+}
+
+.btn-confirm {
+  width: 100%;
+  background: var(--verde);
+  border: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  box-shadow: 0 4px 20px rgba(0,156,59,0.35);
+}
+
+.btn-confirm:hover {
+  background: #00b343;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0,156,59,0.45);
+}
+
+.btn-confirm:active {
+  transform: translateY(0);
+}
+
+/* ---- FEEDBACK ---- */
+.feedback {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feedback.error {
+  background: rgba(255,60,60,0.15);
+  border: 1px solid rgba(255,60,60,0.3);
+  color: #ff8a8a;
+}
+
+.feedback.loading {
+  background: rgba(255,223,0,0.1);
+  border: 1px solid rgba(255,223,0,0.2);
+  color: var(--amarelo);
+}
+
+/* ---- SUCCESS CARD ---- */
+.success-card {
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-card h2 {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: var(--amarelo);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+}
+
+.success-card > p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ddd;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 1.5rem 3rem 1.5rem;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-content { max-width: 100%; }
+  .title { font-size: clamp(4.5rem, 20vw, 7rem); }
+  .form-card, .success-card { padding: 2rem 1.2rem; }
+}
